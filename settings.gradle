@@ -15,3 +15,4 @@ dependencyResolutionManagement {
 rootProject.name = "k23021AndroidLab"
 include ':app'
 include ':testsample'
+include ':extest0221'
