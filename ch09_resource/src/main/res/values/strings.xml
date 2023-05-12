@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name">Find your phone contacts in Messenger</string>
+    <string name="text">continuing to upload your contacts, we help serve you better on Facebook and Messenger by recommending connected contacts and displaying more relevant ads to you and others.</string>
+    <string name="btn1">TRUN ON</string>
+    <string name="btn2">NOT NOW</string>
+</resources>

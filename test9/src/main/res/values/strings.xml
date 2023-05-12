@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">test9</string>
+    <string name="appDesc">desc</string>
+    <string name="test">Reuse strings that are used repeatedly</string>
+</resources>
