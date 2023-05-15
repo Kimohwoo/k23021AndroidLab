@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
+
     <!-- 시스템 맴에 접근하기 위한 샘플, 네트워크 접근(노말), 위치접근(dangerous) -->
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
-
     <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
 
     <application
@@ -14,6 +14,15 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.K23021AndroidLab">
+        <receiver
+            android:name=".ReplyReceiver"
+            android:enabled="true"
+            android:exported="true"></receiver>
+        <receiver
+            android:name=".OneReceiver"
+            android:enabled="true"
+            android:exported="true" />
+
         <activity
             android:name=".DetailActivity"
             android:exported="true" />

@@ -4,6 +4,7 @@ import android.app.Notification
 import android.app.NotificationChannel
 import android.app.NotificationManager
 import android.app.PendingIntent
+
 import android.content.Intent
 import android.graphics.Color
 import android.media.AudioAttributes
@@ -13,7 +14,9 @@ import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.core.app.NotificationCompat
+import androidx.core.app.RemoteInput
 import com.example.test10.databinding.ActivityMain2Binding
+import java.lang.StringBuilder
 
 class MainActivity2 : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -61,22 +64,60 @@ class MainActivity2 : AppCompatActivity() {
             }
             builder.setSmallIcon(android.R.drawable.ic_notification_overlay)
             builder.setWhen(System.currentTimeMillis())
-            builder.setContentTitle("임시 제목")
-            builder.setContentText("전달할 임시 메세지 내용")
+            builder.setContentTitle("임시 제목 액션 인텐트2")
+            builder.setContentText("전달할 임시 액션 인텐트 메세지 내용")
 
             //intent -> 시스템에 메세지를 전달하는 도구
             //역할 : 1)화면 간의 전환 2) 화면간의 데이터 전달
             //사용은 1) 현재 화면에서 -> DetailActivity로 전환해 주세요
             val intent = Intent(this, DetailActivity::class.java)
+
             //기존의 intent 옵션 부가
             // 1) 요청번호, 10
             // 2) 깃발을 이용해서 상태 표기
             val pendingIntent = PendingIntent.getActivity(this, 10, intent, PendingIntent.FLAG_IMMUTABLE)
 
-            builder.setContentIntent(pendingIntent)
+
+            //2번째 액션 관련 부분, 액션 인텐트 확인
+            val actionIntent = Intent(this@MainActivity2, OneReceiver::class.java)
+            val actionPendingIntent = PendingIntent.getBroadcast(this, 20, actionIntent, PendingIntent.FLAG_IMMUTABLE)
+            builder.addAction(
+                NotificationCompat.Action.Builder(
+                    android.R.drawable.stat_notify_more,
+                    "Action 제목입니다.",
+                    actionPendingIntent
+                ).build()
+            )
+            //3. 액션 부분에 답글을 다는 액션 하나만 작업하기
+            val KEY_TEXT_REPLY = "key_text_reply"
+            var replyLabel: String = "답장 테스트"
+            var remoteInput : RemoteInput = RemoteInput.Builder(KEY_TEXT_REPLY).run {
+                setLabel(replyLabel)
+                build()
+            }
+
+            //답장 화면 으로 전환하는 인텐트 설정
+            val replyIntent = Intent(this, ReplyReceiver::class.java)
+            val replyPendingIntent = PendingIntent.getBroadcast(this, 30, replyIntent, PendingIntent.FLAG_MUTABLE)
+            builder.addAction(
+                NotificationCompat.Action.Builder(
+                    android.R.drawable.arrow_down_float,
+                    "답장 테스트",
+                    replyPendingIntent
+                ).addRemoteInput(remoteInput).build()
+            )
+
+
+//            builder.setContentIntent(pendingIntent)
+            //자동닫기
             builder.setAutoCancel(true)
+            //스와이프로 자동 닫기
+            builder.setOngoing(false)
+            //그래서 위의 2가지 옵션을 다 켜두면 사용자가 알림을 닫을수 없음
+            //수동으로 : manager.cancel(11) 요청한 코드 번호로 닫아야 함
 
             //notify 메서드에 인자값으로 Notification 타입 객체 할당
+            //manager.notify(11, builder.build())
             manager.notify(11, builder.build())
         }
 
