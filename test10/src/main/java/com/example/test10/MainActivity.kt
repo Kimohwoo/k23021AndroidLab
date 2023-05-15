@@ -6,6 +6,8 @@ import android.app.TimePickerDialog
 import android.app.TimePickerDialog.OnTimeSetListener
 import android.content.DialogInterface
 import android.content.pm.PackageManager
+import android.media.RingtoneManager
+import android.net.Uri
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -58,6 +60,31 @@ class MainActivity : AppCompatActivity() {
         val binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        //소리부분 확인작업
+        binding.btnSound.setOnClickListener {
+            val notification : Uri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION)
+            val ringtone = RingtoneManager.getRingtone(applicationContext, notification)
+            ringtone.play()
+        }
+
+
+        binding.btnCheck1.setOnClickListener {
+            val items = arrayOf<String>("두루치기","된장", "밀면", "칼국수")
+            AlertDialog.Builder(this).run {
+                setTitle("체크박스 alert 다이얼로그")
+                setIcon(android.R.drawable.ic_dialog_info)
+                setSingleChoiceItems(items, 0, object : DialogInterface.OnClickListener{
+                    override fun onClick(dialog: DialogInterface?, which: Int) {
+                        Log.d("lsy",
+                            "선택한 점심 메뉴 : ${items[which]} 이 선택되었습니다.")
+                    }
+                })
+                setPositiveButton("닫기", null)
+                show()
+            }
+
+        }
+
         //다이얼로그에 체크박스 선택 부분 해보기
         binding.btnCheck.setOnClickListener {
             val items = arrayOf<String>("두루치기","된장", "밀면", "칼국수")
@@ -71,9 +98,10 @@ class MainActivity : AppCompatActivity() {
                             "선택한 점심 메뉴 : ${items[which]} 이 ${if(isChecked)"선택됨" else "선택 해제됨"}")
                     }
                 })
+                setCancelable(false)
                 setPositiveButton("닫기", null)
                 show()
-            }
+            }.setCanceledOnTouchOutside(true)
         }
 
         //다이얼로그에 메뉴 선택 부분 확인 해보기
