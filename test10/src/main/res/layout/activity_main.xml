@@ -1,10 +1,60 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".MainActivity">
+
+    <Button
+        android:id="@+id/btnCheck"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="체크박스 다이얼로그 버튼"
+        android:textSize="30sp"
+        />
+
+    <Button
+        android:id="@+id/btnMenu"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="메뉴 다이얼로그 버튼"
+        android:textSize="30sp"
+        />
+
+    <Button
+        android:id="@+id/btnalert"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="alert 버튼"
+        android:textSize="30sp"
+        />
+
+    <Button
+        android:id="@+id/btnTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="타임 다이얼로그 버튼"
+        android:textSize="30sp"
+        />
+
+    <Button
+        android:id="@+id/btnDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="날짜 다이얼로그 버튼"
+        android:textSize="30sp"
+        />
+
+    <Button
+        android:id="@+id/btn1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="토스트 출력 버튼"
+        android:textSize="30sp"
+        />
 
     <TextView
         android:layout_width="wrap_content"
@@ -15,4 +65,4 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>
