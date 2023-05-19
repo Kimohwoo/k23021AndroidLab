@@ -6,18 +6,23 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:backgroundTint="#f0f"
-    android:background="#f0f"
     tools:context=".IntroActivity">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="200dp"
+        android:src="@drawable/cat"
+        />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_marginTop="400dp"
+        android:layout_marginTop="50dp"
         android:text="인트로 화면"
         android:textSize="30sp"
-        android:textColor="#fff"
         />
 
 </LinearLayout>
