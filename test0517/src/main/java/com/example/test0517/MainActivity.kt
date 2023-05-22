@@ -30,7 +30,6 @@ class MainActivity : AppCompatActivity() {
             binding.itemData.text = datas[position]
         }
 
-
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {

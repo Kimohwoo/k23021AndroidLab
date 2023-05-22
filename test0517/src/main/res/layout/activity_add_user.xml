@@ -80,6 +80,7 @@
         />
 
     <EditText
+        android:id="@+id/Id"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="아이디를 입력 해주세요"
@@ -87,6 +88,7 @@
         android:inputType="text"
         />
     <EditText
+        android:id="@id/password"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="패스워드를 입력 해주세요"
@@ -95,6 +97,7 @@
         />
 
     <EditText
+        android:id="@+id/email"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="email를 입력 해주세요"
@@ -102,6 +105,7 @@
         android:inputType="textEmailAddress"
         />
     <EditText
+        android:id="@+id/phone"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="phone 번호를 입력 해주세요"
@@ -117,12 +121,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
         <RadioButton
+            android:id="@+id/r1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="남"
             />
 
         <RadioButton
+            android:id="@id/r2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="여" />
